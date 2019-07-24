@@ -8,11 +8,12 @@
  * <br> 2019-07-23 09:09:27
  */
 
-package hw.serviceImpl;
+package com.hw.springbootlearn.hw.serviceImpl;
 
-import hw.service.TestInterface;
 
-public class TestInterfaceImpl implements TestInterface{
+import com.hw.springbootlearn.hw.service.TestInterface;
+
+public class TestInterfaceImpl implements TestInterface {
     @Override
     public void sayHi() {
         System.out.println("hello gis!!");

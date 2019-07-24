@@ -8,9 +8,11 @@
  * <br> 2019-07-23 15:14:32
  */
 
-package hw.serviceImpl;
+package com.hw.springbootlearn.hw.serviceImpl;
 
-public class Dog extends Animal{
+import com.hw.springbootlearn.hw.serviceImpl.Animal;
+
+public class Dog extends Animal {
 
     public void eat(){
         System.out.println("dog eatting=------------");

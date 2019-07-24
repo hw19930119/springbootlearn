@@ -8,7 +8,7 @@
  * <br> 2019-07-23 15:13:48
  */
 
-package hw.serviceImpl;
+package com.hw.springbootlearn.hw.serviceImpl;
 
 public class Animal {
     public void eat(){

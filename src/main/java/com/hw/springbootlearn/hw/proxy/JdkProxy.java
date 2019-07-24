@@ -8,7 +8,7 @@
  * <br> 2019-07-23 14:50:06
  */
 
-package hw.proxy;
+package com.hw.springbootlearn.hw.proxy;
 
 import org.apache.ibatis.reflection.Jdk;
 

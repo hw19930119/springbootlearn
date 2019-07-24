@@ -8,7 +8,7 @@
  * <br> 2019-07-23 09:08:03
  */
 
-package hw.service;
+package com.hw.springbootlearn.hw.service;
 
 public interface TestInterface {
 
