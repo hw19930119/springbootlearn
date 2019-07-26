@@ -8,7 +8,7 @@
  * <br> 2019-07-24 16:13:59
  */
 
-package hw;
+package com.hw.springbootlearn.hw;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 @SpringBootApplication
+
 @RestController
 public class SpringbootlearnApplication implements CommandLineRunner {
 	@Autowired
