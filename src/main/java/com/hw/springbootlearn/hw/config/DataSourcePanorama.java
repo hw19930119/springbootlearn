@@ -11,6 +11,8 @@
 package com.hw.springbootlearn.hw.config;
 
 
+import com.alibaba.druid.pool.DruidDataSource;
+
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -27,13 +29,13 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(value = "com.liantong.dao.shop", sqlSessionTemplateRef  = "mysqlSqlSessionTemplate")  //关联的mapper.xml所在位置
+@MapperScan(value = "com.hw.springbootlearn.hw.dao", sqlSessionTemplateRef  = "mysqlSqlSessionTemplate")  //关联的mapper.xml所在位置
 public class DataSourcePanorama {
     @Bean(name = "mysqlDataSource") //作为一个bean对象并命名
-    @ConfigurationProperties(prefix = "spring.datasource.mysql") //配置文件中，该数据源的前缀
-    @Primary   //用于标记主数据源，除了主数据源外，其余注入文件都不添加该注解
+    @ConfigurationProperties(prefix = "spring.datasource.db1") //配置文件中，该数据源的前缀
+   // @Primary   //用于标记主数据源，除了主数据源外，其余注入文件都不添加该注解
     public DataSource testDataSource() {
-        return DataSourceBuilder.create().build();
+        return DataSourceBuilder.create().type(DruidDataSource.class).build();
     }
 
     @Bean(name = "mysqlSqlSessionFactory")
@@ -41,7 +43,7 @@ public class DataSourcePanorama {
     public SqlSessionFactory testSqlSessionFactory(@Qualifier("mysqlDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:com/liantong/dao/shop/ShopMapper.xml"));//对应mapper.xml的具体位置
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapper/*.xml"));//对应mapper.xml的具体位置
         return bean.getObject();
     }
 

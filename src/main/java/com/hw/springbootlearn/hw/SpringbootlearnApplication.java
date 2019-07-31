@@ -13,7 +13,12 @@ package com.hw.springbootlearn.hw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,15 +28,17 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication
-
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class,
+	DataSourceTransactionManagerAutoConfiguration.class,
+	HibernateJpaAutoConfiguration.class,//排除掉jpa的自动装配，否者pom中引入了jpa，但是又没有相关的配置，自动装配就会报错
+	JdbcTemplateAutoConfiguration.class})
 @RestController
-public class SpringbootlearnApplication implements CommandLineRunner {
-	@Autowired
-	private DataSource dataSource;
+public class SpringbootlearnApplication{
+	/*@Autowired
+	private DataSource dataSource;*/
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	//@Autowired
+	//private JdbcTemplate jdbcTemplate;
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootlearnApplication.class, args);
 	}
@@ -40,7 +47,7 @@ public class SpringbootlearnApplication implements CommandLineRunner {
 
 		return "hollo world!";
 	}
-	@Override
+	/*@Override
 	public void run(String... args) throws Exception {
 		showConnection();
 		showData();
@@ -51,10 +58,10 @@ public class SpringbootlearnApplication implements CommandLineRunner {
 		Connection conn = dataSource.getConnection();
 		System.out.println(conn.toString());
 		conn.close();
-	}
+	}*/
 
-	private void showData() {
+	/*private void showData() {
 		jdbcTemplate.queryForList("SELECT * FROM FOO")
 			.forEach(row -> System.out.println(row.toString()));
-	}
+	}*/
 }
