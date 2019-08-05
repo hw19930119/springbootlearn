@@ -28,10 +28,10 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class,
-	DataSourceTransactionManagerAutoConfiguration.class,
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class,//排除springboot自动装配
+	DataSourceTransactionManagerAutoConfiguration.class,//排除springboot自动装配
 	HibernateJpaAutoConfiguration.class,//排除掉jpa的自动装配，否者pom中引入了jpa，但是又没有相关的配置，自动装配就会报错
-	JdbcTemplateAutoConfiguration.class})
+	JdbcTemplateAutoConfiguration.class})//排除springboot自动装配
 @RestController
 public class SpringbootlearnApplication{
 	/*@Autowired
