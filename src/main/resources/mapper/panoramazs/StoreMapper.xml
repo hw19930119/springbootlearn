@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hw.springbootlearn.hw.dao.CityDao">
 
-    <select id="getCityList" resultType="Map">
-        SELECT * FROM CITY
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.springbootlearn.hw.dao.panoramazs.StoreDao">
+
+    <select id="getStoreList" resultType="Map">
+        SELECT * FROM T_ZSYZT_DK_STORE
     </select>
 </mapper>
