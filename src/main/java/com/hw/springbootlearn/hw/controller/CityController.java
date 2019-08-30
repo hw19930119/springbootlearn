@@ -35,7 +35,7 @@ public class CityController {
     public List<Map<String,Object>> getCitys() throws SQLException {
         Connection con=mysqlDataSource.getConnection();
         Connection con1=ponoramaZsDataSource.getConnection();
-        System.out.println(con.toString());
+        System.out.println(con);
         System.out.println(mysqlDataSource.toString());
         System.out.println(ponoramaZsDataSource.toString());
          return cityDao.getCityList();

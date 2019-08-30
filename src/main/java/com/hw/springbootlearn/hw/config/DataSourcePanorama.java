@@ -39,7 +39,6 @@ public class DataSourcePanorama {
     }
 
     @Bean(name = "mysqlSqlSessionFactory")
-    @Primary
     public SqlSessionFactory testSqlSessionFactory(@Qualifier("mysqlDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
@@ -48,13 +47,11 @@ public class DataSourcePanorama {
     }
 
     @Bean(name = "mysqlTransactionManager")
-    @Primary
     public DataSourceTransactionManager testTransactionManager(@Qualifier("mysqlDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean(name = "mysqlSqlSessionTemplate")
-    @Primary
     public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("mysqlSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }

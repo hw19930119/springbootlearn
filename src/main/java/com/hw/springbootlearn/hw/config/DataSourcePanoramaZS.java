@@ -39,7 +39,6 @@ public class DataSourcePanoramaZS {
     }
 
     @Bean(name = "ponoramaZsSqlSessionFactory")
-    @Primary
     public SqlSessionFactory testSqlSessionFactory(@Qualifier("ponoramaZsDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
@@ -48,13 +47,11 @@ public class DataSourcePanoramaZS {
     }
 
     @Bean(name = "ponoramaZsTransactionManager")
-    @Primary
     public DataSourceTransactionManager testTransactionManager(@Qualifier("ponoramaZsDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean(name = "ponoramaZsSqlSessionTemplate")
-    @Primary
     public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("ponoramaZsSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
